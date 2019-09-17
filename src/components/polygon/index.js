@@ -65,35 +65,6 @@ const Style = styled.div`
       mix-blend-mode: multiply;
     }
   }
-  .message {
-    position: absolute;
-    width: 100%;
-    padding: 0 10px;
-    max-width: var(--width);
-    top: 0;
-    right: 0;
-    left: 0;
-    margin: auto;
-    text-align: center;
-    height: var(--topHeight);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: #ffffff;
-    z-index: 9999;
-    h1 {
-      font-size: 1.8rem;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-    .gatsby-image-wrapper {
-      border-radius: 50%;
-      opacity: 0.8;
-      margin-top: 15px;
-      margin-bottom: 15px;
-    }
-  }
 `
 const Polygon = props => {
   const data = useStaticQuery(graphql`
