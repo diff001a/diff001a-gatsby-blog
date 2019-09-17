@@ -1,0 +1,255 @@
+:root {
+  --purple: #bd93f9;
+  --pink: #ff79c6;
+  --green: #50fa7b;
+  --blue: #8be9fd;
+  --yellow: #f1fa8c;
+  --orange: #ffb86c;
+  --color: #666;
+}
+
+code {
+  background: var(--primaryPale);
+  border: none;
+  text-shadow: none;
+  color: var(--primary);
+  padding: 3px 5px !important;
+  border: 1px solid var(--primaryLight);
+  border-radius: 3px;
+  margin: 0 3px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.gatsby-highlight {
+  width: 100%;
+}
+
+pre[class*="language-"], pre[class*="language-"]>code {
+  color: #eee;
+  background: #373949;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: .95em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  border-radius: 8px;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  border: none;
+}
+
+pre[class*="language-"] {
+  position: relative;
+  margin: 0;
+  overflow: visible;
+  padding: 8px;
+  border: 0;
+  width: 100%;
+}
+
+pre[class*="language-"]>code {
+  position: relative;
+  line-height: 1.35rem;
+}
+
+code[class*="language"] {
+  max-height: inherit;
+  height: inherit;
+  padding: 0 1em;
+  display: block;
+  overflow: auto;
+}
+
+:not(pre)>code[class*="language-"], pre[class*="language-"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  font-size: 13px;
+}
+
+:not(pre)>code[class*="language-"] {
+  display: inline;
+}
+
+pre[class*="language-"].line-numbers.line-numbers {
+  padding-left: 0;
+}
+
+pre[class*="language-"].line-numbers.line-numbers code {
+  padding-left: 3.5em;
+  color: var(--color);
+}
+
+pre[class*="language-"].line-numbers.line-numbers .line-numbers-rows {
+  left: 0;
+}
+
+pre[class*="language-"][data-line] {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+pre[data-line] code {
+  position: relative;
+  padding-left: 4em;
+}
+
+pre .line-highlight {
+  margin-top: 0;
+}
+
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  left: -3.8em;
+  width: 3em;
+  letter-spacing: -1px;
+  border-right: 1px solid var(--primaryLight);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 15px 0;
+  background: #fffeff;
+}
+
+.line-numbers-rows>span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
+}
+
+.line-numbers-rows>span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+  text-align: right;
+  height: 21.0px;
+}
+
+@media screen and (max-width: 780px) {
+  .line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em;
+    letter-spacing: -1px;
+    border-right: 1px solid var(--primaryLight);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 15px 0;
+    background: #fffeff;
+  }
+  .line-numbers-rows>span {
+    pointer-events: none;
+    display: block;
+    counter-increment: linenumber;
+  }
+  .line-numbers-rows>span:before {
+    content: counter(linenumber);
+    color: #999;
+    display: block;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    text-align: right;
+    height: 18px;
+  }
+}
+
+.command-line-prompt {
+  border-right: 1px dashed #999;
+  display: block;
+  float: left;
+  font-size: 100%;
+  letter-spacing: -1px;
+  margin-right: 1em;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.command-line-prompt>span:before {
+  color: #999;
+  content: ' ';
+  display: block;
+  padding-right: 0.8em;
+}
+
+.command-line-prompt>span[data-user]:before {
+  content: "[" attr(data-user) "@" attr(data-host) "] $";
+}
+
+.command-line-prompt>span[data-user="root"]:before {
+  content: "[" attr(data-user) "@" attr(data-host) "] #";
+}
+
+.command-line-prompt>span[data-prompt]:before {
+  content: attr(data-prompt);
+}
+
+.keyword {
+  color: var(--pink);
+}
+
+.function-variable, .function {
+  color: var(--green);
+}
+
+.punctuation, .operator {
+  color: var(--pink);
+}
+
+.constant {
+  color: var(--green);
+}
+
+.string {
+  color: var(--yellow);
+}
+
+.selector {
+  color: var(--purple);
+}
+
+.property {
+  color: var(--blue);
+}
+
+.comment {
+  color: #aaa;
+}
