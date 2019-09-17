@@ -112,16 +112,6 @@ const Polygon = props => {
           }
         }
       }
-      site {
-        siteMetadata {
-          title
-          description
-          author
-          social {
-            twitter
-          }
-        }
-      }
     }
   `)
   return (
@@ -137,11 +127,6 @@ const Polygon = props => {
           style={{ width: "100%", height: "400px" }}
           objectFit="cover"
         />
-      </div>
-      <div className="message">
-        <Image fixed={data.avatar.childImageSharp.fixed} alt="author" />
-        <h1>{data.site.siteMetadata.title}</h1>
-        <p>{data.site.siteMetadata.description}</p>
       </div>
     </Style>
   )
