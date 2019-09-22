@@ -231,6 +231,44 @@ const Wrapper = styled.div`
         }
       }
     }
+    .footer-midashi {
+      width: 100%;
+      position: relative;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-weight: 600;
+      width: 100%;
+      vertical-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+      &:before {
+        position: absolute;
+        content: "";
+        background: linear-gradient(
+          45deg,
+          #c488d0 0%,
+          #fdb6c6 50%,
+          #ffbe74 100%
+        );
+        width: 100%;
+        height: 2px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 0;
+        opacity: 0.7;
+      }
+      span {
+        background: var(--background);
+        z-index: 999;
+        position: absolute;
+        padding: 0 30px;
+      }
+    }
   }
   @media screen and (max-width: 780px) {
     .info {

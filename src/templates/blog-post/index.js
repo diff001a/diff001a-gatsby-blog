@@ -6,6 +6,7 @@ import { Tags } from "../../components/modules"
 import Paging from "../../components/paging-single"
 import Share from "../../components/share"
 import TOC from "../../components/toc"
+import Related from "../../components/related"
 import Wrapper from "./style"
 
 const BlogPostTemplate = ({ data, location, pageContext }) => {
@@ -35,6 +36,11 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
             title={post.frontmatter.title}
             url={`${site.siteUrl}/${post.frontmatter.slug}/`}
           />
+          {pageContext.relatedPosts.length === 0 ? (
+            ""
+          ) : (
+            <Related data={pageContext.relatedPosts} />
+          )}
         </article>
         <Paging
           prev={{
