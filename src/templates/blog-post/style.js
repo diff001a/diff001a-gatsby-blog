@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   =============================================== */
   .info {
     margin-top: 30px;
-    margin-bottom: 90px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -46,145 +45,147 @@ const Wrapper = styled.div`
     }
   }
   article {
-    p {
-      line-height: 2;
-      margin: 5px 0;
-    }
-    /* ===============================================
-    #  list 
-    =============================================== */
-    ul,
-    ol {
-      padding: 10px;
-      background: var(--paleGray);
-      border-radius: 5px;
-      margin: 10px 0;
-      li {
-        list-style: none;
-        position: relative;
+    section {
+      /* ===============================================
+      #  midashi
+      =============================================== */
+      p {
+        line-height: 2;
+        margin: 5px 0;
       }
-    }
-    ul {
-      li {
-        padding: 10px 0 10px 20px;
-        border-bottom: 1px dashed var(--lightGray);
-        &:last-child {
-          border-bottom: 0;
+      h2 {
+        width: 100%;
+        position: relative;
+        font-size: 1.2rem;
+        margin-top: 50px;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        width: 100%;
+        vertical-align: center;
+        &:before {
+          position: absolute;
+          content: "";
+          background: linear-gradient(
+            45deg,
+            #c488d0 0%,
+            #fdb6c6 50%,
+            #ffbe74 100%
+          );
+          width: 100%;
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          z-index: 0;
+          opacity: 0.7;
         }
+        &:after {
+          content: "";
+          position: absolute;
+          width: 50%;
+          height: 2px;
+          bottom: 0;
+          right: 0;
+          right: 0;
+          margin: auto;
+          z-index: 1;
+          opacity: 1;
+          border-bottom: 2px dashed var(--background);
+        }
+      }
+      h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-top: 35px;
+        margin-bottom: 15px;
+        display: flex;
+        padding: 7px 0 7px 15px;
+        position: relative;
         &:before {
           content: "";
-          width: 8px;
-          height: 8px;
-          border-right: 2px solid var(--primary);
-          border-bottom: 2px solid var(--primary);
-          transform: rotate(-45deg);
+          width: 3px;
+          height: 100%;
+          background: linear-gradient(180deg, #e49df2 0%, #fdb6c6 100%);
           position: absolute;
           left: 0;
           top: 0;
           bottom: 0;
           margin: auto;
+          border-radius: 5px;
+          opacity: 0.8;
         }
       }
-    }
-    ol {
-      counter-reset: number 0;
-      li {
-        padding: 10px 0 10px 0px;
-        border-bottom: 1px dashed var(--lightGray);
-        &:last-child {
-          border-bottom: 0;
-        }
-        &:before {
-          counter-increment: number 1;
-          content: counter(number) ",";
-          font-family: serif;
-          font-style: italic;
-          font-weight: 600;
-          color: var(--primary);
-          margin-right: 10px;
-        }
-      }
-    }
-    /* ===============================================
-    #  midashi
-    =============================================== */
-    h2 {
-      width: 100%;
-      position: relative;
-      font-size: 1.2rem;
-      margin-top: 50px;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-      font-weight: 600;
-      width: 100%;
-      vertical-align: center;
-      &:before {
-        position: absolute;
-        content: "";
-        background: linear-gradient(
-          45deg,
-          #c488d0 0%,
-          #fdb6c6 50%,
-          #ffbe74 100%
-        );
-        width: 100%;
-        height: 2px;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        z-index: 0;
-        opacity: 0.7;
-      }
-      &:after {
-        content: "";
-        position: absolute;
-        width: 50%;
-        height: 2px;
-        bottom: 0;
-        right: 0;
-        right: 0;
-        margin: auto;
-        z-index: 1;
-        opacity: 1;
-        border-bottom: 2px dashed var(--background);
-      }
-    }
-    h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-top: 35px;
-      margin-bottom: 15px;
-      display: flex;
-      padding: 7px 0 7px 15px;
-      position: relative;
-      &:before {
-        content: "";
-        width: 3px;
-        height: 100%;
-        background: linear-gradient(180deg, #e49df2 0%, #fdb6c6 100%);
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        margin: auto;
+      h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 20px 0 10px 0;
+        padding: 14px 10px;
+        background: var(--paleGray);
         border-radius: 5px;
-        opacity: 0.8;
       }
-    }
-    h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin: 20px 0 10px 0;
-      padding: 14px 10px;
-      background: var(--paleGray);
-      border-radius: 5px;
-    }
-    h5,
-    h6 {
-      font-weight: 600;
-      padding-top: 20px;
-      margin-bottom: 10px;
+      h5,
+      h6 {
+        font-weight: 600;
+        padding-top: 20px;
+        margin-bottom: 10px;
+      }
+      /* ===============================================
+      #  list 
+      =============================================== */
+      ul,
+      ol {
+        padding: 10px;
+        background: var(--paleGray);
+        border-radius: 5px;
+        margin: 10px 0;
+        li {
+          list-style: none;
+          position: relative;
+        }
+      }
+      ul {
+        li {
+          padding: 10px 0 10px 20px;
+          border-bottom: 1px dashed var(--lightGray);
+          &:last-child {
+            border-bottom: 0;
+          }
+          &:before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid var(--primary);
+            border-bottom: 2px solid var(--primary);
+            transform: rotate(-45deg);
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+          }
+        }
+      }
+      ol {
+        counter-reset: number 0;
+        li {
+          padding: 10px 0 10px 0px;
+          border-bottom: 1px dashed var(--lightGray);
+          &:last-child {
+            border-bottom: 0;
+          }
+          &:before {
+            counter-increment: number 1;
+            content: counter(number) ",";
+            font-family: serif;
+            font-style: italic;
+            font-weight: 600;
+            color: var(--primary);
+            margin-right: 10px;
+          }
+        }
+      }
     }
     /* ===============================================
     #  img

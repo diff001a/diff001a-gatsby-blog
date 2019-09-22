@@ -10,6 +10,9 @@ import Image from "gatsby-image"
 /* ===============================================
 #  page component
 =============================================== */
+//TODO: コメント欄つける(disqus)
+//TODO: 記事ページに関連記事と最新記事を表示させる
+//TODO: 目次を作る
 
 const Wrapper = styled.div`
   background: var(--background);
