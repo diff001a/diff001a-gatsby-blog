@@ -3,6 +3,7 @@ title: Gatsby + Markdownでブログを作り直しました
 date: 2019-09-12T00:00:00.000Z
 description: 元々Gatsby + Contentful + Netlifyという構成でこのブログを運営していたのですが、記事を書いていくうちに普段から愛用しているMarkdownエディタで記事を書きたい気持ちが強くなってきたので、Contentfulを辞めてMarkdownファイルをコンテンツソースとして利用する構成に変更しました。
 slug: gatsby-blog-with-markdown
+keywords: gatsby
 tags:
   - Gatsby
   - Markdown

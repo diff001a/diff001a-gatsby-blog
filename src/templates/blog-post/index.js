@@ -5,6 +5,8 @@ import SEO from "../../components/seo"
 import { Tags } from "../../components/modules"
 import Paging from "../../components/paging-single"
 import Share from "../../components/share"
+import TOC from "../../components/toc"
+import Related from "../../components/related"
 import Wrapper from "./style"
 
 const BlogPostTemplate = ({ data, location, pageContext }) => {
@@ -12,6 +14,9 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
   const site = data.site.siteMetadata
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
+  if (typeof window !== "undefined") {
+    require("smooth-scroll")('a[href*="#"]')
+  }
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
@@ -25,11 +30,17 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
             <h1>{post.frontmatter.title}</h1>
             <Tags tags={post.frontmatter.tags} />
           </div>
+          <TOC data={data.markdownRemark.tableOfContents} />
           <section dangerouslySetInnerHTML={{ __html: post.html }} />
           <Share
             title={post.frontmatter.title}
             url={`${site.siteUrl}/${post.frontmatter.slug}/`}
           />
+          {pageContext.relatedPosts.length === 0 ? (
+            ""
+          ) : (
+            <Related data={pageContext.relatedPosts} />
+          )}
         </article>
         <Paging
           prev={{
@@ -61,6 +72,10 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      tableOfContents
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")

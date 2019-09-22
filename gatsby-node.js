@@ -1,5 +1,5 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const relatedPost = require(`./gatsby-related-post`)
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -19,8 +19,10 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                date(formatString: "YYYY-MM-DD")
                 tags
                 slug
+                keywords
               }
             }
           }
@@ -38,11 +40,15 @@ exports.createPages = async ({ graphql, actions }) => {
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
+    const relatedPosts = relatedPost
+      .extractRelatedPosts(posts, post, relatedPost.defaultConfig)
+      .slice(0, 5)
     createPage({
       path: `/${post.node.frontmatter.slug}/`,
       component: blogPost,
       context: {
         slug: post.node.fields.slug,
+        relatedPosts,
         previous,
         next,
       },
@@ -68,19 +74,6 @@ exports.createPages = async ({ graphql, actions }) => {
           slug: tag,
         },
       })
-    })
-  }
-}
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
     })
   }
 }

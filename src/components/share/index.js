@@ -22,6 +22,9 @@ const Wrapper = styled.div`
 const Share = props => {
   return (
     <Wrapper>
+      <h4 className="footer-midashi">
+        <span>SHARE</span>
+      </h4>
       <div className="inner">
         <Button
           className="twitter"

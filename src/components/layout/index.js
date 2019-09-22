@@ -5,7 +5,7 @@ import Header from "../header"
 import Footer from "../footer"
 
 const Layout = props => {
-  const { location, title, description, children } = props
+  const { location, children } = props
   let isHome
   const rootPath = `${__PATH_PREFIX__}/`
   if (location.pathname === rootPath) {

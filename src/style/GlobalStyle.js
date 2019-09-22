@@ -6,10 +6,10 @@ import { rgba } from "polished"
 =============================================== */
 export const colors = {}
 
-colors.background = "#fafafa"
+colors.background = "#fffeff"
 colors.text = "#617e8c"
 
-colors.paleGray = "#f1f1f1"
+colors.paleGray = "#f9f9f9"
 colors.lightGray = "#ddd"
 colors.gray = "#96acb3"
 

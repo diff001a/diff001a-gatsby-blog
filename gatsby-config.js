@@ -31,6 +31,7 @@ module.exports = {
         exclude: ["/tags/*"],
       },
     },
+    `gatsby-plugin-slug`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-canonical-urls`,
@@ -42,6 +43,14 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: 0,
+              icon: false,
+              maintainCase: false,
+            },
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -173,6 +182,5 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
   ],
 }
