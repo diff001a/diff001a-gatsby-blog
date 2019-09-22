@@ -3,7 +3,7 @@ title: GatsbyJS + Contentful + Netlifyでブログ作ってみた
 description: 静的サイトジェネレーターとHeadless CMSを使ったブログ開発に興味があったので、一番情報が多そうだったGatsby + Contentful + Netlifyの組み合わせで挑戦してみることにしました。完成品はこのブログです！今回の記事ではGatsby+Contentfulでの開発を始めるまでの環境構築の部分や基礎的な部分をまとめておきたいと思います。
 date: "2019-07-04T23:46:37.121Z"
 slug: gatsby-contentful-netlify-blog
-keyword: gatsby
+keywords: gatsby
 tags:
   - Gatsby
   - Contentful

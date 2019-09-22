@@ -3,7 +3,7 @@ title: Sass(SCSS)の関数をstyled-componentsでも使いたい
 date: "2019-08-11T22:40:32.169Z"
 description: Sass(SCSS)でよく使う関数を styled-components でも使いたくて、いろいろ調べてみました。
 slug: sass-styled-components
-keyword: styled-components
+keywords: styled-components
 tags:
   - styled-components
   - sass
