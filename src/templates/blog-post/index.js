@@ -37,6 +37,7 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
             ""
           ) : (
             <Related
+              slug={post.frontmatter.slug}
               related={pageContext.relatedPosts}
               latest={pageContext.latestPosts}
             />

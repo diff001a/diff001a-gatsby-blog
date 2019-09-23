@@ -103,40 +103,47 @@ const Wrapper = styled.div`
 `
 
 const Related = props => {
-  const [amount, setAmount] = useState(0)
-  const [isRelated, setIsRelated] = useState(true)
-  const [data, setData] = useState(props.related)
-  const related = () => {
-    setIsRelated(true)
-  }
-  const latest = () => {
-    setIsRelated(false)
-  }
-  const latestPosts = props.latest.map(e => {
+  const latestPosts = []
+  props.latest.map(e => {
+    // relatedPostsの形に合わせて整形 //
     const frontmatter = e.node.frontmatter
     const temp = {
       slug: frontmatter.slug,
       date: frontmatter.date,
       title: frontmatter.title,
     }
-    return temp
+    // 自分を除外 //
+    if (temp.slug !== props.slug) {
+      latestPosts.push(temp)
+    }
   })
+  const relatedPosts = props.related
+  const [isRelated, setIsRelated] = useState(true)
+  const [data, setData] = useState(relatedPosts)
+
+  const related = () => {
+    setIsRelated(true)
+  }
+  const latest = () => {
+    setIsRelated(false)
+  }
+
   useEffect(() => {
     if (isRelated) {
-      setData(props.related)
+      setData(relatedPosts)
     } else {
       setData(latestPosts)
     }
   }, [isRelated])
 
   return (
-    <Wrapper amount={amount}>
+    <Wrapper>
       <div className="tab-header-wrapper">
         <span onClick={related} className={`${isRelated ? "active" : ""}`}>
-          RELATED POSTS
+          関連記事
         </span>
         <span onClick={latest} className={`${!isRelated ? "active" : ""}`}>
-          LATEST POSTS
+          最新記事
         </span>
       </div>
       <div className="tab-wrapper">
