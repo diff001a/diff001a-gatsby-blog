@@ -40,6 +40,7 @@ exports.createPages = async ({ graphql, actions }) => {
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
+    const latestPosts = posts.slice(0, 5)
     const relatedPosts = relatedPost
       .extractRelatedPosts(posts, post, relatedPost.defaultConfig)
       .slice(0, 5)
@@ -49,6 +50,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         slug: post.node.fields.slug,
         relatedPosts,
+        latestPosts,
         previous,
         next,
       },
