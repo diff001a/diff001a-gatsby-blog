@@ -14,9 +14,6 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
   const site = data.site.siteMetadata
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
-  if (typeof window !== "undefined") {
-    require("smooth-scroll")('a[href*="#"]')
-  }
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
@@ -39,7 +36,10 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
           {pageContext.relatedPosts.length === 0 ? (
             ""
           ) : (
-            <Related data={pageContext.relatedPosts} />
+            <Related
+              related={pageContext.relatedPosts}
+              latest={pageContext.latestPosts}
+            />
           )}
         </article>
         <Paging
