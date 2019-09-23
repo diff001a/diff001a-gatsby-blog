@@ -10,6 +10,9 @@ const Wrapper = styled.div`
     display: flex;
     border: 1px solid var(--lightGray);
     border-bottom: none;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    overflow: hidden;
     span {
       width: 50%;
       padding: 10px;
@@ -40,6 +43,8 @@ const Wrapper = styled.div`
       border-top: 0;
       padding: 30px 20px;
       transition: 0.3s ease;
+      border-bottom-right-radius: 3px;
+      border-bottom-left-radius: 3px;
     }
   }
   .tab-post-item {

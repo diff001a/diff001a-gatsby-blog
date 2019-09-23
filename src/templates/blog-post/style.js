@@ -123,7 +123,6 @@ const Wrapper = styled.div`
         margin: 20px 0 10px 0;
         padding: 14px 10px;
         background: var(--paleGray);
-        border-radius: 5px;
       }
       h5,
       h6 {
@@ -138,8 +137,8 @@ const Wrapper = styled.div`
       ol {
         padding: 10px;
         background: var(--paleGray);
-        border-radius: 5px;
         margin: 10px 0;
+        border-radius: 3px;
         li {
           list-style: none;
           position: relative;
@@ -192,10 +191,10 @@ const Wrapper = styled.div`
     =============================================== */
     .gatsby-resp-image-wrapper {
       overflow: hidden;
-      border-radius: 10px;
       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.12);
       transition: 0.2s ease-in-out;
       margin: 20px 0;
+      border-radius: 3px;
       &:hover {
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.18);
       }
