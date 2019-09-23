@@ -1,7 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { rgba } from "polished"
-import { colors } from "../../style/GlobalStyle"
 import { Link } from "gatsby"
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa"
 
@@ -9,13 +7,12 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  border-top: 1px solid ${rgba(colors.lightGray, 0.6)};
-  border-bottom: 1px solid ${rgba(colors.lightGray, 0.6)};
+  margin-bottom: 30px;
   .paging-item {
     width: 50%;
     display: flex;
     align-items: center;
-    padding: 25px 0px 30px 0;
+    padding: 15px 0px 20px 0;
     font-size: 0.85rem;
     a {
       text-decoration: none;
@@ -44,7 +41,6 @@ const Wrapper = styled.div`
       }
     }
     &.prev {
-      border-right: 1px solid ${rgba(colors.lightGray, 0.6)};
       padding-right: 10px;
       a {
         div {
@@ -72,10 +68,15 @@ const Wrapper = styled.div`
     .paging-item {
       width: 100%;
       padding: 0;
-      padding: 20px 0px 20px 0;
+      padding: 10px 0px 10px 0;
       &.prev {
         border-right: none;
-        border-bottom: 1px solid ${rgba(colors.lightGray, 0.6)};
+        border-bottom: 1px solid var(--lightGray);
+      }
+      &.prev,
+      &.next {
+        text-align: center;
+        padding: 15px 0;
       }
     }
   }

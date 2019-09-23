@@ -3,6 +3,8 @@ import styled from "styled-components"
 import Button from "./button"
 import { FaTwitter, FaGetPocket, FaFacebookSquare } from "react-icons/fa"
 import { StaticQuery } from "gatsby"
+import { colors } from "../../style/GlobalStyle"
+import { rgba } from "polished"
 import Img from "gatsby-image"
 
 const Wrapper = styled.div`
@@ -38,6 +40,8 @@ const Wrapper = styled.div`
     .gatsby-image-wrapper {
       border-radius: 50%;
       margin-right: 15px;
+      box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.1),
+        0 2px 10px -1px ${rgba(colors.text, 0.2)};
     }
   }
   .share-inner {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import { FaCalendarAlt } from "react-icons/fa"
 
 const Wrapper = styled.div`
   width: 100%;
@@ -44,6 +45,8 @@ const Wrapper = styled.div`
   .tab-post-item {
     padding: 12px 0;
     border-bottom: 1px dashed var(--lightGray);
+    display: flex;
+    align-items: center;
     &:last-child {
       border-bottom: none;
       padding-bottom: 0;
@@ -51,15 +54,20 @@ const Wrapper = styled.div`
     .date {
       font-size: 0.75rem;
       color: var(--gray);
-      padding: 3px 12px;
-      margin-right: 20px;
-      background: var(--paleGray);
+      display: flex;
+      align-items: center;
       font-weight: 600;
-      border: 1px solid var(--lightGray);
-      border-radius: 3px;
+      margin-right: 20px;
+      svg {
+        margin-right: 10px;
+        font-size: 0.8rem;
+      }
+      span {
+        padding-top: 1px;
+      }
     }
     .title {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       a {
         text-decoration: none;
         font-weight: 600;
@@ -73,9 +81,22 @@ const Wrapper = styled.div`
   @media screen and (max-width: 780px) {
     .tab-post-item {
       display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
       flex-direction: column;
       .date {
+        background: none;
         padding: 0;
+        border: 0;
+        margin-bottom: 5px;
+        svg {
+          margin-right: 5px;
+        }
+      }
+    }
+    .tab-wrapper {
+      .tab-item {
+        padding: 10px 10px 20px 10px;
       }
     }
   }
@@ -123,7 +144,10 @@ const Related = props => {
           {data.map(e => {
             return (
               <div key={`${e.slug}`} className="tab-post-item">
-                <span className="date">{e.date}</span>
+                <span className="date">
+                  <FaCalendarAlt />
+                  <span>{e.date}</span>
+                </span>
                 <span className="title">
                   <Link to={`/${e.slug}/`}>{e.title} </Link>
                 </span>
