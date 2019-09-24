@@ -38,12 +38,31 @@ exports.createPages = async ({ graphql, actions }) => {
   // 記事個別ページ //
   const posts = result.data.allMarkdownRemark.edges
   posts.forEach((post, index) => {
+    // 次の記事と前の記事 //
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
-    const latestPosts = posts.slice(0, 5)
-    const relatedPosts = relatedPost
-      .extractRelatedPosts(posts, post, relatedPost.defaultConfig)
-      .slice(0, 5)
+    // 最新記事 //
+    const latestPosts = []
+    posts.map(e => {
+      // 自分を除外 //
+      if (e.node.frontmatter.slug !== post.node.frontmatter.slug) {
+        const frontmatter = e.node.frontmatter
+        const temp = {
+          title: frontmatter.title,
+          slug: frontmatter.slug,
+          date: frontmatter.date,
+        }
+        latestPosts.push(temp)
+      }
+    })
+    latestPosts.slice(0, 5)
+    // 関連記事 //
+    const relatedPosts = relatedPost.extractRelatedPosts(
+      posts,
+      post,
+      relatedPost.defaultConfig
+    )
+    // 記事ページ生成 //
     createPage({
       path: `/${post.node.frontmatter.slug}/`,
       component: blogPost,
@@ -65,8 +84,10 @@ exports.createPages = async ({ graphql, actions }) => {
       tagListTemp.push(tag)
     })
   })
+  // 被ってるタグを削除して配列に再変換 //
   const tagSet = new Set(tagListTemp)
   const tagList = Array.from(tagSet)
+  // タグページ生成 //
   if (tagList.length !== 0) {
     tagList.forEach(tag => {
       createPage({

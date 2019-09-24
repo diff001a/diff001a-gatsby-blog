@@ -3,6 +3,7 @@ exports.defaultConfig = {
   keywords: 100,
   tags: 50,
   threshold: 50,
+  number: 5,
 }
 
 function extractRelatedPosts(posts, post, config) {
@@ -46,5 +47,5 @@ function extractRelatedPosts(posts, post, config) {
   temp_arr.sort(function(a, b) {
     return a.score < b.score ? 1 : -1
   })
-  return temp_arr
+  return temp_arr.slice(0, config.number)
 }

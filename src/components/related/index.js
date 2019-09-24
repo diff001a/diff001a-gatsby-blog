@@ -108,20 +108,7 @@ const Wrapper = styled.div`
 `
 
 const Related = props => {
-  const latestPosts = []
-  props.latest.map(e => {
-    // relatedPostsの形に合わせて整形 //
-    const frontmatter = e.node.frontmatter
-    const temp = {
-      slug: frontmatter.slug,
-      date: frontmatter.date,
-      title: frontmatter.title,
-    }
-    // 自分を除外 //
-    if (temp.slug !== props.slug) {
-      latestPosts.push(temp)
-    }
-  })
+  const latestPosts = props.latest
   const relatedPosts = props.related
   const [isRelated, setIsRelated] = useState(true)
   const [data, setData] = useState(relatedPosts)
