@@ -1,54 +1,29 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
-import Polygon from "../components/polygon"
+import Layout from "../components/layout"
 import SEO from "../components/seo"
-import GlobalStyle from "../style/GlobalStyle"
 
 const Wrapper = styled.div`
-  position: relative;
-  .polygon {
-    z-index: -1;
-  }
-  .not-found {
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-    top: 0;
-    z-index: 9999;
-    h1 {
-      font-size: 2rem;
-    }
-  }
-  a {
-    color: #fff;
-    text-decoration: none;
+  width: var(--width);
+  text-align: center;
+  h1 {
+    font-size: 1.4rem;
     font-weight: 600;
-    background: rgba(255, 255, 255, 0.25);
-    padding: 10px 30px;
-    margin-top: 30px;
-    font-size: 0.8rem;
-    border-radius: 33px;
+    padding: 10px 0;
+  }
+  p {
+    font-size: 0.9rem;
   }
 `
 
-const NotFoundPage = () => (
-  <Wrapper>
-    <SEO title="404: Not found" />
-    <Polygon width="100%" height="100vh" />
-    <div className="not-found">
+const NotFoundPage = (props, location) => (
+  <Layout location={location} title="NOT FOUND">
+    <SEO title="NOT FOUND" noindex />
+    <Wrapper>
       <h1>NOT FOUND</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-      <Link to="/">BACK TO TOP</Link>
-    </div>
-    <GlobalStyle />
-  </Wrapper>
+      <p>ページが見つかりませんでした</p>
+    </Wrapper>
+  </Layout>
 )
 
 export default NotFoundPage

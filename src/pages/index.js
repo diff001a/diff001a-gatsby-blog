@@ -11,7 +11,6 @@ import Image from "gatsby-image"
 #  page component
 =============================================== */
 //TODO: コメント欄つける(disqus)
-
 const Wrapper = styled.div`
   background: var(--background);
   width: 100vw;
