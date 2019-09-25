@@ -80,13 +80,11 @@ function setColor() {
 #  font setting
 =============================================== */
 const font = css`
-  font-family: Avenir, -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-    "Segoe ui", "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial,
-    "メイリオ", Meiryo, sans-serif;
+  font-family: -apple-system, system-ui, "Helvetica Neue", "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", "ヒラギノ角ゴ ProN W3", Arial,
+    メイリオ, Meiryo, sans-serif;
   word-wrap: break-word;
   word-break: break-all;
-  -webkit-font-kerning: normal;
-  font-kerning: normal;
   -moz-font-feature-settings: "palt";
   -webkit-font-feature-settings: "palt";
   font-feature-settings: "palt";
@@ -96,7 +94,7 @@ const font = css`
   text-rendering: auto;
   -webkit-text-stroke: 1px transparent;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  letter-spacing: 0.04rem;
+  letter-spacing: 0.05rem;
   font-weight: 400;
   color: var(--text);
 `

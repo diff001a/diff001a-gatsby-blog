@@ -99,4 +99,17 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   }
+  // 検索機能用JSON //
+  // const searchJSON = posts.map(postEdge => {
+  //   const postNode = postEdge.node
+  //   const { field, number, tags } = postNode
+  //   const { title } = postNode.fields
+  //   return {
+  //     title,
+  //     tags,
+  //     number,
+  //     path: `/posts/${number}`,
+  //   }
+  // })
+  // fs.writeFileSync("./static/search.json", JSON.stringify(searchJSON, null, 2))
 }

@@ -6,6 +6,7 @@ import { StaticQuery } from "gatsby"
 import { colors } from "../../style/GlobalStyle"
 import { rgba } from "polished"
 import Img from "gatsby-image"
+import { useSiteMetadata } from "../queries"
 
 const Wrapper = styled.div`
   width: 100%;
@@ -69,6 +70,7 @@ const Wrapper = styled.div`
 `
 
 const Share = props => {
+  const { author } = useSiteMetadata()
   const data = (
     <StaticQuery
       query={graphql`
@@ -87,7 +89,9 @@ const Share = props => {
   )
   return (
     <Wrapper>
-      <span className="share-header">{data}Written by diff001a</span>
+      <span className="share-header">
+        {data}Written by {author}
+      </span>
       <div className="share-inner">
         <Button
           className="twitter"

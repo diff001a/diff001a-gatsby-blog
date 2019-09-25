@@ -1,7 +1,9 @@
 import React from "react"
-import { useStaticQuery } from "gatsby"
+import { StaticQuery } from "gatsby"
 import styled from "styled-components"
-import { FaRss, FaSitemap } from "react-icons/fa"
+import { FaGithub, FaRss, FaSitemap } from "react-icons/fa"
+import { useSiteMetadata } from "../queries"
+import Img from "gatsby-image"
 
 const Wrapper = styled.footer`
   position: absolute;
@@ -25,8 +27,10 @@ const Wrapper = styled.footer`
     }
     .right {
       margin-left: auto;
+      display: flex;
+      align-items: center;
       a {
-        font-size: 1rem;
+        font-size: 1.1rem;
         text-decoration: none;
         margin-right: 35px;
         font-weight: 600;
@@ -43,34 +47,54 @@ const Wrapper = styled.footer`
   }
 `
 
-const Footer = () => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-            siteUrl
-            social {
-              twitter
-              github
+const Feedly = () => {
+  return (
+    <StaticQuery
+      query={graphql`
+        query FeedlyQuery {
+          avatar: file(absolutePath: { regex: "/feedly.png/" }) {
+            childImageSharp {
+              fixed(width: 22, height: 22) {
+                ...GatsbyImageSharpFixed
+              }
             }
           }
         }
-      }
-    `
+      `}
+      render={data => <Img fixed={data.avatar.childImageSharp.fixed} />}
+    />
   )
+}
+
+const Footer = () => {
+  const { author, social, siteUrl } = useSiteMetadata()
   return (
     <Wrapper>
       <div className="inner">
-        <address>© {site.siteMetadata.author}. All rights reserved.</address>
+        <address>© {author}. All rights reserved.</address>
         <div className="right">
-          <a href={`${site.siteMetadata.siteUrl}/sitemap.xml`}>
+          {social.github !== "" ? (
+            <a
+              href={`https://github.com/${social.github}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub />
+            </a>
+          ) : (
+            ""
+          )}
+          <a
+            href="https://feedly.com/i/subscription/feed%2Fhttps%3A%2F%2Fdiff001a.netlify.com%2Frss.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Feedly />
+          </a>
+          <a href={`${siteUrl}/sitemap.xml`}>
             <FaSitemap />
           </a>
-          <a href={`${site.siteMetadata.siteUrl}/rss.xml`}>
+          <a href={`${siteUrl}/rss.xml`}>
             <FaRss />
           </a>
         </div>

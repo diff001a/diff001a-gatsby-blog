@@ -51,7 +51,7 @@ const Wrapper = styled.div`
       =============================================== */
       p {
         line-height: 2;
-        margin: 5px 0;
+        margin: 20px 0;
       }
       h2 {
         width: 100%;

@@ -20,6 +20,7 @@ const Wrapper = styled.header`
   }
   .inner {
     display: flex;
+    align-items: center;
     width: var(--width);
     .logo {
       font-weight: 600;
@@ -36,10 +37,6 @@ const Wrapper = styled.header`
           margin-right: 0;
         }
       }
-    }
-    .feedly-img {
-      width: 22px;
-      height: 22px;
     }
   }
   &.notHome,

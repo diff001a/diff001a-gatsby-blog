@@ -54,6 +54,7 @@ pre[class*="language-"], pre[class*="language-"]>code {
   -ms-hyphens: none;
   hyphens: none;
   border: none;
+  letter-spacing: 0.03rem;
 }
 
 pre[class*="language-"] {

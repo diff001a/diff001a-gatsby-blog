@@ -126,7 +126,7 @@ const Related = props => {
     } else {
       setData(latestPosts)
     }
-  }, [isRelated])
+  }, [isRelated, relatedPosts, latestPosts])
 
   return (
     <Wrapper>
