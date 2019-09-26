@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "diff001a <diff001a@gmail.com>",
   "dependencies": {
+    "axios": "^0.19.0",
     "gatsby": "^2.15.14",
     "gatsby-image": "^2.2.18",
     "gatsby-plugin-canonical-urls": "^2.1.7",

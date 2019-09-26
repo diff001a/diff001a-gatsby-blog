@@ -8,7 +8,7 @@ const Wrapper = styled.header`
   width: 100%;
   color: #ffffff;
   z-index: 99999;
-  height: 60px;
+  height: 70px;
   padding-top: 5px;
   transition: 0.6s ease;
   a {
