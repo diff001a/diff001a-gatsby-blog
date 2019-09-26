@@ -70,3 +70,6 @@ yarn-error.log
 
 # vscode setting
 .vscode/
+
+#draft
+_draft/
