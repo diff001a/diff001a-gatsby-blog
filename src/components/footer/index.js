@@ -23,7 +23,7 @@ const Wrapper = styled.footer`
     width: 100%;
     max-width: var(--width);
     address {
-      font-weight: 600;
+      font-weight: 400;
     }
     .right {
       margin-left: auto;

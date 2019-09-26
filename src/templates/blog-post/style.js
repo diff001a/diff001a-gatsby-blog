@@ -191,12 +191,12 @@ const Wrapper = styled.div`
     =============================================== */
     .gatsby-resp-image-wrapper {
       overflow: hidden;
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.12);
+      box-shadow: rgba(20, 20, 20, 0.1) 1px 1px 20px;
       transition: 0.2s ease-in-out;
       margin: 20px 0;
       border-radius: 3px;
       &:hover {
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.18);
+        box-shadow: rgba(20, 20, 20, 0.2) 1px 1px 20px;
       }
     }
     .gatsby-highlight {
