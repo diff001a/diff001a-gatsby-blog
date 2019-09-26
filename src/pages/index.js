@@ -10,7 +10,6 @@ import Image from "gatsby-image"
 /* ===============================================
 #  page component
 =============================================== */
-//TODO: コメント欄つける(disqus)
 const Wrapper = styled.div`
   background: var(--background);
   width: 100vw;
@@ -48,6 +47,9 @@ const Wrapper = styled.div`
       margin-top: 15px;
       margin-bottom: 15px;
     }
+  }
+  @media screen and (max-width: 780px) {
+    margin-bottom: 40px;
   }
 `
 

@@ -43,6 +43,16 @@ const Wrapper = styled.footer`
   @media screen and (max-width: 780px) {
     .inner {
       padding: 0 10px;
+      flex-direction: column-reverse;
+      address,
+      .right {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .right {
+        margin-bottom: 20px;
+      }
     }
   }
 `

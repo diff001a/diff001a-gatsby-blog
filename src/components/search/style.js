@@ -53,6 +53,11 @@ export const Wrapper = styled.div`
         props.focus ? rgba(colors.primary, 0.8) : "rgba(65, 65, 65, 0.3)"};
     }
   }
+  @media screen and (max-width: 780px) {
+    input {
+      width: ${props => (props.focus ? "120px" : "70px")};
+    }
+  }
 `
 
 export const ResultWrapper = styled.div`
@@ -117,6 +122,12 @@ export const ResultWrapper = styled.div`
     .res,
     ul {
       display: block;
+    }
+  }
+  @media screen and (max-width: 780px) {
+    .result-inner {
+      padding: 20px 10px;
+      width: 90%;
     }
   }
 `

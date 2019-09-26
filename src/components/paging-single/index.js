@@ -69,6 +69,14 @@ const Wrapper = styled.div`
       width: 100%;
       padding: 0;
       padding: 10px 0px 10px 0;
+      justify-content: center;
+      a div {
+        text-align: center;
+        justify-content: center;
+        svg {
+          display: none;
+        }
+      }
       &.prev {
         border-right: none;
         border-bottom: 1px solid var(--lightGray);
