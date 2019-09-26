@@ -110,5 +110,5 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/${slug}/`,
     }
   })
-  fs.writeFileSync("./json/search.json", JSON.stringify(searchJSON, null, 2))
+  fs.writeFileSync("./static/search.json", JSON.stringify(searchJSON, null, 2))
 }

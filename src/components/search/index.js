@@ -26,7 +26,7 @@ const SearchResult = props => {
   // 全記事データ取得 //
   const [data, setData] = useState([])
   const getData = async () => {
-    const res = await axios.get("/search.json")
+    const res = await axios.get("./search.json")
     setData(res.data)
   }
   useEffect(() => {
