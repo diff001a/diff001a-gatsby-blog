@@ -119,7 +119,6 @@ const Wrapper = styled.div`
       }
       h4 {
         font-size: 1rem;
-        font-weight: 600;
         margin: 20px 0 10px 0;
         padding: 14px 10px;
         background: var(--paleGray);
@@ -135,7 +134,7 @@ const Wrapper = styled.div`
       =============================================== */
       ul,
       ol {
-        padding: 10px;
+        padding: 20px;
         background: var(--paleGray);
         margin: 10px 0;
         border-radius: 3px;
@@ -146,7 +145,7 @@ const Wrapper = styled.div`
       }
       ul {
         li {
-          padding: 10px 0 10px 20px;
+          padding: 10px 0 10px 25px;
           border-bottom: 1px dashed var(--lightGray);
           &:last-child {
             border-bottom: 0;
@@ -176,12 +175,10 @@ const Wrapper = styled.div`
           }
           &:before {
             counter-increment: number 1;
-            content: counter(number) ",";
-            font-family: serif;
-            font-style: italic;
+            content: counter(number) ".";
             font-weight: 600;
             color: var(--primary);
-            margin-right: 10px;
+            margin-right: 12px;
           }
         }
       }

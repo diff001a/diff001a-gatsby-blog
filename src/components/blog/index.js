@@ -54,8 +54,8 @@ const BlogWrapper = styled.article`
 =============================================== */
 const Blog = props => {
   let content = props.description || props.excerpt
-  if (content.length >= 110) {
-    content = `${content.substr(0, 110)}...`
+  if (content.length >= 105) {
+    content = `${content.substr(0, 105)}...`
   }
   return (
     <BlogWrapper key={props.slug}>

@@ -4,7 +4,7 @@ import _ from "lodash"
 import { rgba } from "polished"
 import { colors } from "../../style/GlobalStyle"
 import { Link } from "gatsby"
-import { FaHashtag, FaRegClock } from "react-icons/fa"
+import { FaHashtag, FaCalendarAlt } from "react-icons/fa"
 
 const Wrapper = styled.div`
   display: flex;
@@ -40,10 +40,10 @@ const Wrapper = styled.div`
     }
   }
   &.date {
-    font-style: italic;
     color: ${rgba(colors.text, 0.7)};
     svg {
       color: ${rgba(colors.text, 0.4)};
+      margin-right: 10px;
     }
   }
 `
@@ -68,7 +68,7 @@ export const Tags = props => {
 export const PublishDate = props => {
   return (
     <Wrapper className="date">
-      <FaRegClock />
+      <FaCalendarAlt />
       <span>{props.date}</span>
     </Wrapper>
   )

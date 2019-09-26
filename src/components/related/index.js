@@ -62,7 +62,8 @@ const Wrapper = styled.div`
       display: flex;
       align-items: center;
       font-weight: 600;
-      margin-right: 20px;
+      margin-right: 10px;
+      width: 120px;
       svg {
         margin-right: 10px;
         font-size: 0.8rem;

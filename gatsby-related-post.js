@@ -43,9 +43,25 @@ function extractRelatedPosts(posts, post, config) {
     }
     temp_arr.push(temp)
   })
-  // score順に並び替え //
+  // scoreとdateをもとに並び替え //
   temp_arr.sort(function(a, b) {
-    return a.score < b.score ? 1 : -1
+    const temp_date_a = new Date(a.date).getTime()
+    const temp_date_b = new Date(b.date).getTime()
+    // 第一ソートキーは関連性 //
+    if (a.score > b.score) {
+      return -1
+    }
+    if (a.score < b.score) {
+      return 1
+    }
+    // 第二ソートキーは日付 //
+    if (temp_date_a > temp_date_b) {
+      return -1
+    }
+    if (temp_date_a < temp_date_b) {
+      return 1
+    }
+    return 0
   })
   return temp_arr.slice(0, config.number)
 }
