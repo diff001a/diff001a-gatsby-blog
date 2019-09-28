@@ -11,6 +11,7 @@ const Wrapper = styled.header`
   height: 70px;
   padding-top: 5px;
   transition: 0.6s ease;
+  background: rgba(255, 255, 255, 0);
   a {
     color: #fff;
     text-decoration: none;
