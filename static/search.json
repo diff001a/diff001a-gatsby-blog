@@ -1,5 +1,13 @@
 [
   {
+    "title": "Gatsby製ブログでサイト内検索を実装しました",
+    "keywords": "gatsby",
+    "tags": [
+      "Gatsby"
+    ],
+    "path": "/gatsby-site-search/"
+  },
+  {
     "title": "Gatsby + Markdownでブログを作り直しました",
     "keywords": "gatsby",
     "tags": [
