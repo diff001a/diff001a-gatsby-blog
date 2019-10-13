@@ -3,7 +3,7 @@ title: Firebaseでbasic認証をかける方法
 date: "2019-07-09T22:40:32.169Z"
 description: ポートフォリオをホスティングするのにbasic認証をかけたいなと思ったんですが、Netlifyの無料プランでは無理みたいだったので、はじめてFirebaseを使ってみました🔥 デプロイまでの手順や、つまったところをメモしておこうと思います。
 slug: firebase-basic-authorization
-keywords: firebase
+keywords: Platform
 tags:
   - firebase
 ---
