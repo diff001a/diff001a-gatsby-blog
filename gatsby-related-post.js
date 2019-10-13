@@ -63,5 +63,6 @@ function extractRelatedPosts(posts, post, config) {
     }
     return 0
   })
-  return temp_arr.slice(0, config.number)
+  const arr = temp_arr.slice(0, config.number)
+  return arr
 }

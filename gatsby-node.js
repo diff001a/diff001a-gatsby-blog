@@ -43,7 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
     // 最新記事 //
-    const latestPosts = []
+    const latestPosts_temp = []
     posts.map(e => {
       // 自分を除外 //
       if (e.node.frontmatter.slug !== post.node.frontmatter.slug) {
@@ -53,10 +53,10 @@ exports.createPages = async ({ graphql, actions }) => {
           slug: frontmatter.slug,
           date: frontmatter.date,
         }
-        latestPosts.push(temp)
+        latestPosts_temp.push(temp)
       }
     })
-    latestPosts.slice(0, 5)
+    const latestPosts = latestPosts_temp.slice(0, 5)
     // 関連記事 //
     const relatedPosts = relatedPost.extractRelatedPosts(
       posts,
