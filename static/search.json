@@ -10,16 +10,18 @@
   },
   {
     "title": "Gatsby製ブログでサイト内検索を実装しました",
-    "keywords": "gatsby",
+    "keywords": "JavaScript",
     "tags": [
+      "React",
       "Gatsby"
     ],
     "path": "/gatsby-site-search/"
   },
   {
     "title": "Gatsby + Markdownでブログを作り直しました",
-    "keywords": "gatsby",
+    "keywords": "JavaScript",
     "tags": [
+      "React",
       "Gatsby",
       "Markdown"
     ],
@@ -27,18 +29,19 @@
   },
   {
     "title": "Sass(SCSS)の関数をstyled-componentsでも使いたい",
-    "keywords": "styled-components",
+    "keywords": "JavaScript",
     "tags": [
+      "React",
       "styled-components",
-      "sass",
       "polished"
     ],
     "path": "/sass-styled-components/"
   },
   {
     "title": "【styled-components】keyframesにpropsを渡す方法",
-    "keywords": "styled-components",
+    "keywords": "JavaScript",
     "tags": [
+      "React",
       "styled-components"
     ],
     "path": "/styled-components-keyframes/"
@@ -53,8 +56,9 @@
   },
   {
     "title": "GatsbyJS + Contentful + Netlifyでブログ作ってみた",
-    "keywords": "gatsby",
+    "keywords": "JavaScript",
     "tags": [
+      "React",
       "Gatsby",
       "Contentful",
       "Netlify"

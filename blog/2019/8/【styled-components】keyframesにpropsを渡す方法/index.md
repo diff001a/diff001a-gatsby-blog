@@ -4,8 +4,9 @@ date: "2019-08-06T22:12:03.284Z"
 description: "React で styled-components を使っている時に、keyframes に props を渡す方法です。
 よく忘れるので忘備録代わりにメモしておきます ✍️"
 slug: "styled-components-keyframes"
-keywords: styled-components
+keywords: JavaScript
 tags:
+    - React
     - styled-components
 ---
 

@@ -59,7 +59,7 @@ vsce login diff001a
 
 Marketplaceに登録するのに必要になるファイルは以下の通りです。
 
-- 100px x 100pxサイズのアイコン画像
+- アイコン画像
 - package.json
 - README.md
 - LICENSE.md
