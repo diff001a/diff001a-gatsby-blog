@@ -1,5 +1,14 @@
 [
   {
+    "title": "VSCodeのMarketplaceに自作拡張機能を公開する方法",
+    "keywords": "開発ツール",
+    "tags": [
+      "VSCode",
+      "テーマ開発"
+    ],
+    "path": "/publish-vscode-extension/"
+  },
+  {
     "title": "Gatsby製ブログでサイト内検索を実装しました",
     "keywords": "gatsby",
     "tags": [
