@@ -13,30 +13,28 @@ keywords: 開発ツール
 
 台風で予定が潰れてめっちゃ暇だったので、この暇を利用してVSCodeのテーマを作って、Marketplaceに公開するところまでやってみました。
 
-ピンク率高めのかわいいダークテーマが欲しいなーと思ってたので、そういうイメージで作ってみました。少し紫がかったブラックを背景色にしたことで、甘くなりすぎず、可読性も保てて結構いい感じになったんじゃないかなーと思います✨[今回作成したテーマのMarketplaceページはこちらから確認してみてください！](https://marketplace.visualstudio.com/items?itemName=diff001a.kawaii-theme)
+ピンク率高めのかわいいダークテーマが欲しいなーと思ってたので、そういうイメージで作ってみました。少し紫がかったブラックを背景色にしたことで、甘くなりすぎず、可読性も保てて結構いい感じになったんじゃないかなーと思います✨[今回作成したテーマのMarketplaceページはこちらから](https://marketplace.visualstudio.com/items?itemName=diff001a.kawaii-theme)
 
-今回の記事では、**Marketplaceに自作の拡張機能を公開する方法**についてまとめておきたいと思います。テーマの開発方法については今回触れていませんのでお気をつけください！
+今回の記事では、**Marketplaceに自作の拡張機能を公開する方法**についてまとめておきたいと思います。テーマの開発方法については今回の記事で触れませんので、そっちを詳しく知りたい方は[公式ガイド](https://code.visualstudio.com/api/references/theme-color)を見てくださいね！
 
-## まずはアカウント作成 & アクセストークンを取得
+## まずはAzure DevOpsのアカウント作成 & アクセストークンを取得
 
 [Azure DevOps](https://dev.azure.com/)でアカウントを作成してログインします。
 
-ログインしたら画面右上の自分のアイコン部分をクリックして、**Security**を選択すると、**Personal Access Token**ページが表示されるので、**New Token**をクリックして新しいアクセストークンを作成します。
+ログインしたら管理画面右上の自分のアイコン部分をクリックして、`Security`を選択します。
 
-この時に注意するのは、このふたつの項目です。
+すると、Personal Access Tokenページが表示されるので、`+ New Token`をクリックして新しいアクセストークンを作成します。この時に注意するのは、以下ふたつの項目です。
 
 - **Scopes**は**Full Access**を設定しておく事
 - **Organization**は**All accessible organizations**を設定しておく事
 
-このふたつは気をつけておかないと後々エラーが出て苦しめられますので**絶対確認しましょう**！！！
+このふたつは気をつけないと後々エラーが出るので**絶対に確認しましょう！！！**
 
-これで`create`ボタンをクリックするとアクセストークンが表示されるのでどこかにメモしておいてください。
-
-このトークンは**後から確認することができないので、**ここでメモしておくのを忘れるともう一回新しいトークンを作成しないといけなくなるので注意です！
+後は適当な名前をつけて、`create`ボタンをクリックするとアクセストークンが表示されるので、どこかにメモしておいてください。このトークンは一度画面を閉じてしまうと**後から確認することができません。**ここでメモしておくのを忘れないように気をつけましょう✨
 
 ## vsceのインストールと設定
 
-Marketplaceに登録するのに`vsce`というツールが必要になるので、インストールと設定を済ませておきます。
+Marketplaceに登録するのに`vsce`というツールが必要になるので、先にインストールとPublisherの設定を済ませておきます。
 
 ### vsceをインストール
 
@@ -46,33 +44,35 @@ npm install -g vsce
 
 ### Publisherの設定
 
+この途中で、さっきメモしたアクセストークンを聞かれるので入力してください。
+
 ```
-vsce create-publisher diff001a
-vsce login diff001a
+vsce create-publisher Publisher名
+vsce login Publisher名
 ```
 
-ここでさっきメモしたアクセストークンを聞かれるので、入力してください。
-
-**diff001a**の部分は**publisher名**になりますので、好きな名前に変更してください。
+**publisher名**の部分はお好きな名前に変更してください。
 
 ## Marketplaceに登録するのに必要なファイルを用意する
 
-Marketplaceに登録するのに必要になるファイルは以下の通りです。
+Marketplaceに登録するには以下のファイルが必要になります。
 
 - アイコン画像
 - package.json
 - README.md
 - LICENSE.md
 
-この中でも一番重要なのは、**package.json**です。絶対に必要になるのが以下の部分の記述です。
+READMEとLICENSEは、普段githubを使っている方ならなんとなく書き方はわかるかと思いますので、説明を省略します。
+
+注意する必要があるのは、**package.json**の内容です。最低限以下の記述は必須となります。
 
 ```json
-  "name": "kawaii-theme",
-  "displayName": "Kawaii Theme",
+  "name": "theme-no-namae",
+  "displayName": "テーマの名前",
   "version": "1.0.0",
-  "publisher": "diff001a",
-  "description": "A very sweet theme for vscode. enjoy :)",
-  "icon": "icon.png",
+  "publisher": "Publisher名",
+  "description": "テーマの説明",
+  "icon": "アイコン画像.png",
   "engines": {
     "vscode": "*"
   },
@@ -82,22 +82,22 @@ Marketplaceに登録するのに必要になるファイルは以下の通りで
   }
 ```
 
-ここで重要なのは**publisher**の部分です！**先ほどvsceの設定で指定した名前(publisher名)**と同じ名前にしておかないと、エラーがでて公開が完了しませんので注意してください！
+重要なのは**publisher**の部分です。**先ほどvsceの設定で指定した名前(publisher名)**と同じ名前にしておかないと、エラーがでて公開が完了しませんので注意してください！
 
-そのほかにも必須ではありませんが、カテゴリーやタグなどもpackage.jsonから設定できます。
+その他にも必須ではありませんが、カテゴリーやタグなどエクステンションのメタ情報もpackage.jsonから設定できます。詳しくは[今回作成したテーマのgithubページ](https://github.com/diff001a/KawaiiTheme)を参考にしてみてください！
 
-これらのファイルの詳しい内容については[今回作成したテーマのgithubページ](https://github.com/diff001a/KawaiiTheme)を参考にしてみてください！
+## Marketplaceに公開
 
-## ついにMarketplaceに公開 🎉
-
-もうあとは公開するだけです！
-
-package.jsonが置いてあるフォルダに移動して、以下のvsceコマンドを実行しましょう！
+ここまでできたら、package.jsonが置いてあるフォルダに移動して以下のvsceコマンドを実行しましょう！
 
 ```
 vsce publish
 ```
 
-## 雑感
+これでMarketplaceに公開されているのが確認できたらリリース完了です！お疲れ様でした 🎉
 
-自作テーマは愛着も湧きますし、Marketplaceに公開されると少し達成感も味わえて楽しかったです！いい休日の過ごし方でした✨
+## 追記
+
+全然関係ないんですが、テーマを新しくしたついでにエディタのフォントも[Fira Code](https://github.com/tonsky/FiraCode)に変更してみました😄
+
+コーディング用途に特化したフォントで、コーディングでよく使うコード(`>=` `==` `!=`など)が**合字**になり個人的にはめっちゃ読みやすくなったのでおすすめです🌈
