@@ -1,4 +1,3 @@
-const fs = require("fs")
 const path = require(`path`)
 const relatedPost = require(`./gatsby-related-post`)
 
@@ -100,15 +99,5 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   }
-  // 検索用JSON //
-  const searchJSON = posts.map(post => {
-    const { title, slug, tags, keywords } = post.node.frontmatter
-    return {
-      title,
-      keywords,
-      tags,
-      path: `/${slug}/`,
-    }
-  })
-  fs.writeFileSync("./static/search.json", JSON.stringify(searchJSON, null, 2))
+  å
 }

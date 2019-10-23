@@ -1,11 +1,31 @@
 import React, { useState, useEffect } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-import axios from "axios"
 import { FaSearch } from "react-icons/fa"
 import TextHighlighter from "./highlight"
 import { Wrapper, ResultWrapper } from "./style"
 
 const SearchResult = props => {
+  const tempData = useStaticQuery(graphql`
+    query SearchData {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___date], order: DESC }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            frontmatter {
+              date(formatString: "YYYY-MM-DD")
+              title
+              slug
+              tags
+              keywords
+            }
+          }
+        }
+      }
+    }
+  `)
   // 表示非表示切り替え //
   const [className, setClassName] = useState("")
   useEffect(() => {
@@ -25,15 +45,15 @@ const SearchResult = props => {
   }, [props.focus, props.value])
   // 全記事データ取得 //
   const [data, setData] = useState([])
-  const getData = async () => {
-    const res = await axios.get("/search.json")
-    setData(res.data)
-  }
   useEffect(() => {
-    getData()
+    const temp = []
+    tempData.allMarkdownRemark.edges.map(e => {
+      temp.push(e.node.frontmatter)
+    })
+    setData(temp)
   }, [])
   // 記事検索 //
-  const [result, setResult] = useState(data)
+  const [result, setResult] = useState([])
   const search = () => {
     const value = props.value.toLowerCase()
     const temp = data.filter(e => {
@@ -60,8 +80,8 @@ const SearchResult = props => {
         <ul>
           {result.map(e => {
             return (
-              <li key={e.path}>
-                <Link to={e.path}>
+              <li key={e.slug}>
+                <Link to={`/${e.slug}/`}>
                   <TextHighlighter str={e.title} includes={props.value} />
                 </Link>
               </li>

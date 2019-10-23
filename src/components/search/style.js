@@ -128,8 +128,7 @@ export const ResultWrapper = styled.div`
   }
   @media screen and (max-width: 780px) {
     .result-inner {
-      padding: 20px 10px;
-      width: 90%;
+      width: 95%;
     }
   }
 `
