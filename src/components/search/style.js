@@ -71,7 +71,7 @@ export const ResultWrapper = styled.div`
     right: 0;
     left: 0;
     margin: auto;
-    padding: 20px;
+    /* padding: 20px; */
     transition: 0.3s ease;
     opacity: 0;
     visibility: hidden;
@@ -81,8 +81,10 @@ export const ResultWrapper = styled.div`
     z-index: 99999;
   }
   .res {
-    display: inline-block;
-    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--lightGray);
     b {
       padding: 0 3px;
     }
@@ -90,13 +92,12 @@ export const ResultWrapper = styled.div`
   ul {
     max-height: 210px;
     overflow-y: scroll;
-    margin-bottom: 5px;
     li {
       list-style: none;
       a {
         display: inline-block;
         color: var(--text);
-        padding: 10px 0;
+        padding: 10px 20px;
         width: 100%;
         border-bottom: 1px dashed var(--lightGray);
         z-index: 9999999;
@@ -109,6 +110,7 @@ export const ResultWrapper = styled.div`
       &:last-child {
         a {
           border-bottom: none;
+          padding-bottom: 15px;
         }
       }
     }
