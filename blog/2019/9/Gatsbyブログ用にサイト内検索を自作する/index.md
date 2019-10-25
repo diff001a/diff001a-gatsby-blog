@@ -1,6 +1,6 @@
 ---
 title: Gatsby製ブログでサイト内検索を実装しました
-date: 2019-09-28T00:00:00.000Z
+date: 2019-10-24T00:00:00.000Z
 description: Gatsbyではビルド時に静的ページを生成する為、検索結果ページのように入力された検索ワードによって動的に内容が変わるようなページは生成することができません。なので検索機能はSaaSなどを利用して実装するのが一般的になっているみたいなんですが、こちらのブログで検索機能を自前実装する方法が紹介されていて、参考にさせていただいたところ思った以上に手軽にできたので、今回の記事ではその実装の記録を残しておきたいと思います。
 slug: gatsby-site-search
 tags: 
@@ -15,81 +15,71 @@ Gatsbyではビルド時に静的ページを生成する為、検索結果ペ�
 
 ## 実装方法
 
-[こちらのブログ](https://mottox2.com/posts/268)で紹介されている方法を参考にさせていただきました！以下のような手順です。
+以下のような手順を踏んで実装していきます。
 
-1. 検索用のJSONファイルを作っておき、ビルド時に内容を更新する
-2. ReactコンポーネントからJSONを呼び出す
-3. Reactコンポーネント内で検索処理
+1. useStaticQueryを使って検索コンポーネント内で全記事データを取得する
+2. 検索コンポーネント内で検索処理
 
-検索用のJSONファイルをビルドの度に更新するというのが斬新なアイディアですよね！この方法であれば確かにバックエンドなしで検索機能が実装できそうです✨
+参考にさせていただいたブログ記事では、ビルドの度に全記事分の情報が格納されたjsonファイルを生成し、それをReactコンポーネントからaxiosを使って取得していましたが、今回は`useStaticQuery`を利用して、検索用のコンポーネント内から全記事データを取得してみる事にしました。
 
-## 検索用のJSONを生成 & ビルド時に内容を更新する設定
-
-まずは作業ディレクトリ直下に**static**というフォルダを作って、その中に**search.json**という名前の空のjsonファイルを追加しておきます。
-
-それから、**gatsby-node.js**内の**createPages**の中に以下のような処理を追加して、ビルドするたびに**search.json**の内容が書き換えられるように設定しておきます。
+## useStaticQueryで全記事データを取得
 
 ```javascript
-// "posts" にはGraphQLを介して取得した全記事データが格納されています //
-const searchJSON = posts.map(post => {
-  const { title, slug, tags, keywords } = post.node.frontmatter
-  return {
-    title,
-    keywords,
-    tags,
-    path: `/${slug}/`,
+const tempData = useStaticQuery(graphql`
+  query SearchData {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 1000
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            slug
+            tags
+            keywords
+          }
+        }
+      }
+    }
   }
-})
-fs.writeFileSync("./static/search.json", JSON.stringify(searchJSON, null, 2))
+`)
+const [data, setData] = useState([])
+useEffect(() => {
+  const temp = []
+  tempData.allMarkdownRemark.edges.map(e => {
+    temp.push(e.node.frontmatter)
+  })
+  setData(temp)
+}, [])
 ```
 
-これでビルドすると、**search.json**の内容が以下のような感じに書き換えられています。
+全件取得なので、トップページで使うクエリとよく似た感じのクエリになります。検索対象にタイトルとタグとキーワードを含めたいと思っているので、その三つとスラッグをGraphQLを介して取得して、扱いやすい形に変換したものを`data`に格納しています。`data`に入っているデータは以下のような形になっています。
 
-```json
+```javascript
 [
   {
-    "title": "Gatsby製ブログでサイト内検索を実装しました",
-    "keywords": "gatsby",
-    "tags": [
-      "Gatsby"
-    ],
-    "path": "/gatsby-site-search/"
+    title: "Gatsby製ブログでサイト内検索を実装しました",
+    slug: "gatsby-site-search",
+    tags: Array(2),
+    keywords: "JavaScript",
   },
   {
-    "title": "Gatsby + Markdownでブログを作り直しました",
-    "keywords": "gatsby",
-    "tags": [
-      "Gatsby",
-      "Markdown"
-    ],
-    "path": "/gatsby-blog-with-markdown/"
-  },
-  ...
+    title: "VSCodeのMarketplaceに自作拡張機能を公開する方法",
+    slug: "publish-vscode-extension",
+    tags: Array(2),
+    keywords: "開発ツール",
+  }
 ]
 ```
 
-## Reactコンポーネントからjsonデータを呼び出す
-
-Reactコンポーネントからjsonデータを呼び出す為に[axios](https://github.com/axios/axios)というプラグインを使っています
-
-```javascript
-const [data, setData] = useState([])
-const getData = async () => {
-  const res = await axios.get("/search.json")
-  setData(res.data)
-}
-useEffect(() => {
-  getData()
-}, [])
-```
-これで`data`に全記事分の情報が格納されるので、検索ワードでfilterする処理を書いていきます。
 
 ## 検索処理
 
-このブログではタイトルとタグとキーワードを検索対象にすることにしたので、タイトルとタグとキーワードを以下のように一つの文字列として連結させ、その文字列が入力された値を含むかどうかでfilterをかけています。
+まず、検索対象にするタイトル・タグ・キーワードを一つの文字列として連結させ、その文字列が入力された値を含むかどうかでfilterをかけています。
 
 ```javascript
-const [result, setResult] = useState(data)
+const [result, setResult] = useState([])
 const search = () => {
   const value = props.value.toLowerCase()
   const temp = data.filter(e => {
@@ -97,7 +87,7 @@ const search = () => {
       ${e.title.toLowerCase()}
       ${e.tags.join(" ").toLowerCase()}
       ${e.keywords.toLowerCase()}
-     `
+    `
     return target.indexOf(value) !== -1
   })
   setResult(temp)
@@ -139,8 +129,8 @@ strにタイトル、includesに検索文字列を渡します。
 
 ## 雑感
 
-記事書き終わってからちょっと思ったんですが...検索機能用のコンポーネントで`useStaticQuery`を使って全記事分のデータを取得して、それをfilterして表示させるという方法でも多分実装できましたねwどっちの方がパフォーマンス的に良いとかあるんかなー
+[実際のコードはこちらから！](https://github.com/diff001a/diff001a-gatsby-blog/blob/master/src/components/search/index.js)
 
-とにかく、サイト内検索のような機能もバックエンド一切なしでGatsbyだけで実装できるというところが個人的には大きな発見で、勉強になりました。
+最初はビルドの度にjsonを生成する方法で実装していたんですが、useStaticQueryを使う方法で作り直してみたので、それに伴い記事の内容も変更しました。
 
-[Gatsbyの公式リファレンスガイド](https://www.gatsbyjs.org/docs/adding-search/)ではSaaSやライブラリを使用する方法が紹介されているので、自分の興味に合わせて実装方法を選べばいいのかなと思います。
+シンプルな記述のみで実装できるので、個人ブログの検索機能程度であれば[Gatsbyの公式リファレンスガイド](https://www.gatsbyjs.org/docs/adding-search/)で紹介されているSaaSやライブラリを使用する方法よりも自前実装の方が早いんじゃないかな？という気さえしています。いろいろカスタマイズもしやすいですし、おすすめです。
