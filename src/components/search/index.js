@@ -6,6 +6,7 @@ import TextHighlighter from "./highlight"
 import { Wrapper, ResultWrapper } from "./style"
 
 const SearchResult = props => {
+  // 全記事データ取得 //
   const tempData = useStaticQuery(graphql`
     query SearchData {
       allMarkdownRemark(
@@ -26,7 +27,16 @@ const SearchResult = props => {
       }
     }
   `)
-  // 表示非表示切り替え //
+  const [data, setData] = useState([])
+  useEffect(() => {
+    const temp = []
+    tempData.allMarkdownRemark.edges.map(e => {
+      temp.push(e.node.frontmatter)
+    })
+    setData(temp)
+  }, [])
+
+  // 表示非表示の切り替え //
   const [className, setClassName] = useState("")
   useEffect(() => {
     let id
@@ -43,16 +53,8 @@ const SearchResult = props => {
       clearTimeout(id)
     }
   }, [props.focus, props.value])
-  // 全記事データ取得 //
-  const [data, setData] = useState([])
-  useEffect(() => {
-    const temp = []
-    tempData.allMarkdownRemark.edges.map(e => {
-      temp.push(e.node.frontmatter)
-    })
-    setData(temp)
-  }, [])
-  // 記事検索 //
+
+  // 検索処理 //
   const [result, setResult] = useState([])
   const search = () => {
     const value = props.value.toLowerCase()
@@ -71,6 +73,7 @@ const SearchResult = props => {
       search()
     }
   }, [props.value])
+
   return (
     <ResultWrapper className={className}>
       <div className="result-inner">
