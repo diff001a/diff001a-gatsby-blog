@@ -99,5 +99,4 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   }
-  å
 }
