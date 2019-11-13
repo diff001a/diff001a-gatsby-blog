@@ -65,12 +65,13 @@ export const ResultWrapper = styled.div`
     position: absolute;
     background: var(--background);
     border-radius: 3px;
-    box-shadow: rgba(20, 20, 20, 0.15) 1px 1px 20px;
+    box-shadow: rgba(20, 20, 20, 0.2) 1px 1px 20px;
     width: var(--width);
+    width: 520px;
     top: 70px;
-    right: 0;
-    left: 0;
-    margin: auto;
+    right: calc((100vw - var(--width)) / 2);
+    /* left: 0;
+    margin: auto; */
     /* padding: 20px; */
     transition: 0.3s ease;
     opacity: 0;
@@ -129,6 +130,7 @@ export const ResultWrapper = styled.div`
   @media screen and (max-width: 780px) {
     .result-inner {
       width: 95%;
+      right: 2.5%;
     }
   }
 `
