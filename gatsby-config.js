@@ -36,7 +36,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://diff001a.netlify.com/`,
+        siteUrl: `https://diff001a.netlify.app/`,
       },
     },
     {
