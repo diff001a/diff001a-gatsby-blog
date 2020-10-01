@@ -4629,6 +4629,10 @@ gatsby-plugin-canonical-urls@^2.1.7:
   dependencies:
     "@babel/runtime" "^7.6.0"
 
+gatsby-plugin-disqus@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-disqus/-/gatsby-plugin-disqus-1.2.2.tgz#d10e72c2ac0f7205abd7dda2e8cb4ecc0743a824"
+
 gatsby-plugin-feed@^2.3.12:
   version "2.3.12"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-2.3.12.tgz#60ea4ab45f486da1e565b38b87919adcb11f7ec9"

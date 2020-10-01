@@ -266,6 +266,14 @@ const Wrapper = styled.div`
       }
     }
   }
+  .placeholder {
+    font-size: 14px;
+  }
+  #disqus_thread {
+    padding-top: 20px;
+    margin-bottom: 50px;
+  }
+
   @media screen and (max-width: 780px) {
     .info {
       margin-top: 10px;

@@ -9,6 +9,7 @@
     "gatsby": "^2.15.14",
     "gatsby-image": "^2.2.18",
     "gatsby-plugin-canonical-urls": "^2.1.7",
+    "gatsby-plugin-disqus": "^1.2.2",
     "gatsby-plugin-feed": "^2.3.12",
     "gatsby-plugin-google-analytics": "^2.1.16",
     "gatsby-plugin-manifest": "^2.2.16",
@@ -43,7 +44,7 @@
   "devDependencies": {
     "prettier": "^1.18.2"
   },
-  "homepage": "https://diff001a.netlify.com/",
+  "homepage": "https://diff001a.netlify.app/",
   "keywords": [
     "gatsby"
   ],
