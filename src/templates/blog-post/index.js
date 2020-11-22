@@ -35,9 +35,11 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
             url={`${site.siteUrl}/${post.frontmatter.slug}/`}
           />
           <Disqus
-            identifier={post.slug}
-            title={post.title}
-            url={`${site.siteUrl}/${post.frontmatter.slug}/`}
+            config={{
+              identifier: post.frontmatter.slug,
+              title: post.title,
+              url: site.siteUrl + "/" + post.frontmatter.slug,
+            }}
           />
           {pageContext.relatedPosts.length === 0 ? (
             <Latest latest={pageContext.latestPosts} />
