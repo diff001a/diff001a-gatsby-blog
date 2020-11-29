@@ -58,14 +58,22 @@ const Blog = props => {
     content = `${content.substr(0, 105)}...`
   }
   return (
-    <BlogWrapper key={props.slug}>
+    <BlogWrapper
+      key={props.slug}
+      itemProp="blogPost"
+      itemScope
+      itemType="http://schema.org/BlogPosting"
+    >
       <div>
-        <h2>
-          <Link to={props.slug}>{props.title}</Link>
+        <h2 itemProp="name">
+          <Link to={props.slug} itemProp="url">
+            {props.title}
+          </Link>
         </h2>
       </div>
       <section>
         <p
+          itemProp="headline"
           dangerouslySetInnerHTML={{
             __html: content,
           }}
