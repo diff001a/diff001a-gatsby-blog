@@ -38,7 +38,7 @@ function SEO({
   )
 
   const metaDescription = description || site.siteMetadata.description
-  const index = noindex ? `noindex follow` : `index, follow`
+  const index = noindex ? `noindex` : `index, follow`
 
   return (
     <Helmet

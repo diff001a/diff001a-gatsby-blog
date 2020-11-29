@@ -21,15 +21,28 @@ const BlogPostTemplate = ({ data, location, pageContext }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <Wrapper className="inner">
-        <article>
+      <Wrapper className="inner" itemScope itemType="http://schema.org/Blog">
+        <article
+          itemProp="blogPost"
+          itemScope
+          itemType="http://schema.org/BlogPosting"
+        >
           <div className="info">
-            <div className="date">{post.frontmatter.date}</div>
-            <h1>{post.frontmatter.title}</h1>
+            <div
+              className="date"
+              itemProp="datePublished"
+              dateTime={post.frontmatter.date}
+            >
+              {post.frontmatter.date}
+            </div>
+            <h1 itemProp="name">{post.frontmatter.title}</h1>
             <Tags tags={post.frontmatter.tags} />
           </div>
           <TOC data={data.markdownRemark.tableOfContents} />
-          <section dangerouslySetInnerHTML={{ __html: post.html }} />
+          <section
+            itemProp="articleBody"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
           <Share
             title={post.frontmatter.title}
             url={`${site.siteUrl}/${post.frontmatter.slug}/`}

@@ -67,7 +67,7 @@ export const Tags = props => {
 
 export const PublishDate = props => {
   return (
-    <Wrapper className="date">
+    <Wrapper className="date" itemProp="datePublished" dateTime={props.date}>
       <FaCalendarAlt />
       <span>{props.date}</span>
     </Wrapper>

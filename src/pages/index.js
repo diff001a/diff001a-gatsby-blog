@@ -70,7 +70,7 @@ const BlogIndex = ({ data, location }) => {
           <h1>{data.site.siteMetadata.title}</h1>
           <p>{data.site.siteMetadata.description}</p>
         </div>
-        <div className="inner">
+        <div className="inner" itemScope itemType="http://schema.org/Blog">
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             return (
