@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   .paging-item {
     width: 50%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding: 15px 0px 20px 0;
     font-size: 0.85rem;
     a {
